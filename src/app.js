@@ -5,12 +5,22 @@ import jobRouter from "./routes/job.routes.js"
 
 const app =express()
 const PORT  =process.env.PORT || 4000
-app.use(cors(
-    {
-        methods:["GET","POST","DELETE"],
-        origin:"http://localhost:3000"
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://your-frontend.vercel.app"
+];
+
+app.use(cors({
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
     }
-))
+  },
+  methods: ["GET", "POST", "DELETE"]
+}));
+
 app.use(express.json());
 
 app.get("/",(req,res)=>{
