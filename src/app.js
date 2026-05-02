@@ -4,6 +4,7 @@ import cors from "cors"
 import jobRouter from "./routes/job.routes.js"
 
 const app =express()
+const PORT  =process.env.PORT || 4000
 app.use(cors(
     {
         methods:["GET","POST","DELETE"],
@@ -22,7 +23,7 @@ app.use("/v1/jobs", jobRouter)
 
 
 
-app.listen(4000,()=>{
-    console.log("Server start at port 4000")
-})
+app.listen(PORT, () => {
+  console.log(`Server start at port ${PORT}`);
+});
 
