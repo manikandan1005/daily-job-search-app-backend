@@ -7,7 +7,7 @@ const app =express()
 const PORT  =process.env.PORT || 4000
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://your-frontend.vercel.app"
+  "https://daily-job-search-app.vercel.app"
 ];
 
 app.use(cors({
